@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { QueryProvider } from "@/components/providers/query-provider";
+import { UserMenuWithSession } from "@/features/auth/components/user-menu";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -44,6 +45,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
+        <UserMenuWithSession variant="compact"/>
         <QueryProvider>
           <ThemeProvider
             attribute="class"
