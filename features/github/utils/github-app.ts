@@ -4,7 +4,7 @@ let githubApp:App | null = null;
 
 
 export function getGithubApp(){
-    console.log(githubApp)
+    
     if(!githubApp){
         // githubApp = new App({
         //     appId:process.env.GITHUB_APP_ID!,
@@ -17,7 +17,7 @@ export function getGithubApp(){
             appId:4094239,
             privateKey: process.env.GITHUB_APP_PRIVATE_KEY!.replace(/\\n/g, "\n"),
             webhooks:{
-                secret:"PC5t8ydLkAl5GW3Yzi8shTVQ9dgqA9JW"
+                secret: process.env.GITHUB_APP_WEBHOOK_SECRET!
             }
         })
     }

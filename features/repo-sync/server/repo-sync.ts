@@ -127,6 +127,7 @@ export function buildRepoNamespace(repoFullName: string) {
       const records = batch.map((chunk) => ({
         id: chunk.id,
         text: chunk.text,
+        // chunk_text: chunk.text,
         filePath: chunk.filePath,
       }));
   

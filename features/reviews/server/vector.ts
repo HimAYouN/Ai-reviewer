@@ -16,6 +16,7 @@ export async function saveChunksToPinecone(
     const records = chunks.map((chunk) => ({
         id: chunk.id,
         text: chunk.text,
+        // chunk_text: chunk.text,
         filePath: chunk.filePath,
     }));
 
