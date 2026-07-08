@@ -20,7 +20,7 @@ const REPOS_STALE_TIME = 10 * 60 * 1000; // 10 minutes
 export const githubReposInfiniteQuery = infiniteQueryOptions({
     queryKey: [...githubRepoKeys.all, "list"],
     queryFn: async ({ pageParam }) => {
-        const response = await fetch(`/api/github/repos?page=${pageParam}`);
+        const response = await fetch(`/api/github/repo?page=${pageParam}`);
 
         if (!response.ok) {
             throw new Error("Failed to load repositories");
