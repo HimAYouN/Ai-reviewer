@@ -18,16 +18,20 @@ model test {
 }
 
 model User {
-  id            String    @id
-  name          String
-  email         String
-  emailVerified Boolean   @default(false)
-  image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  sessions      Session[]
-  accounts      Account[]
-  githubInstallation GithubInstallation?
+  id                     String              @id
+  name                   String
+  email                  String
+  emailVerified          Boolean             @default(false)
+  image                  String?
+  plan                   String              @default("free") // freee | pro
+  razorpaySubscriptionId String?
+  subscriptionStatus     String? //active | cancled | trialing
+  subscriptionRenewaAt   DateTime?
+  createdAt              DateTime            @default(now())
+  updatedAt              DateTime            @updatedAt
+  sessions               Session[]
+  accounts               Account[]
+  githubInstallation     GithubInstallation?
 
   @@unique([email])
   @@map("user")
@@ -81,7 +85,6 @@ model Verification {
   @@map("verification")
 }
 
-
 model GithubInstallation {
   id             String   @id @default(cuid())
   userId         String   @unique
@@ -94,7 +97,6 @@ model GithubInstallation {
 
   @@map("github_installation")
 }
-
 
 model PullRequest {
   id             String    @id @default(cuid())
@@ -115,7 +117,6 @@ model PullRequest {
   @@map("pull_request")
 }
 
-
 model RepoSync {
   id             String    @id @default(cuid())
   installationId Int
@@ -130,4 +131,3 @@ model RepoSync {
   @@unique([repoFullName])
   @@map("repo_sync")
 }
-
