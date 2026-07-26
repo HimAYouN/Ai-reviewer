@@ -129,5 +129,74 @@
   }
   html {
     @apply font-mono;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .landing-shell {
+    background-image:
+      radial-gradient(circle at top left, color-mix(in srgb, var(--primary) 18%, transparent), transparent 34%),
+      radial-gradient(circle at bottom right, color-mix(in srgb, var(--accent) 16%, transparent), transparent 32%),
+      linear-gradient(135deg, color-mix(in srgb, var(--background) 92%, var(--card) 8%), var(--background));
+  }
+
+  .landing-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--border) 60%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--border) 60%, transparent) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 88%);
+    opacity: 0.26;
+    pointer-events: none;
+    animation: drift-grid 18s linear infinite;
+  }
+
+  .landing-shell::before,
+  .landing-shell::after {
+    content: "";
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    opacity: 0.42;
+    pointer-events: none;
+    animation: drift-orb 14s ease-in-out infinite alternate;
+  }
+
+  .landing-shell::before {
+    top: -8rem;
+    left: -6rem;
+    width: 24rem;
+    height: 24rem;
+    background: color-mix(in srgb, var(--primary) 34%, transparent);
+  }
+
+  .landing-shell::after {
+    right: -8rem;
+    bottom: -6rem;
+    width: 26rem;
+    height: 26rem;
+    background: color-mix(in srgb, var(--accent) 30%, transparent);
+    animation-duration: 18s;
+  }
+}
+
+@keyframes drift-orb {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(2rem, -2.5rem, 0) scale(1.08);
+  }
+}
+
+@keyframes drift-grid {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-2rem, -2rem, 0);
   }
 }
